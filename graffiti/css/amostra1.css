@@ -1,0 +1,60 @@
+ /* Configurações Iniciais e Modificações do Exercício II */
+
+H1 {
+    font-family: Arial;
+    font-size: xx-large;
+    font-weight: bold;
+    color: #FF4500; /* Modificado: Laranja avermelhado  */
+    background: #F0F0F0; /* Modificado: Cinza claro  */
+    text-align: center;
+    padding: 4pt;
+    border: 2px solid; /* Modificado: Estilo 'solid'  */
+    position: relative;
+}
+
+H2 {
+    font-family: Arial;
+    color: #006400; /* Modificado: Verde escuro  */
+    background: #E0FFE0; /* Modificado: Verde claro  */
+}
+
+H3 {
+    color: #4B0082; /* Modificado: Indigo  */
+    background: #E6E6FA; /* Modificado: Lavender  */
+}
+
+P {
+    font-family: Arial;
+    font-size: 12pt; /* Modificado: Tamanho 12pt  */
+}
+
+/* Classes com bordas modificadas  */
+.first {
+    border-top: thin ridge; /* Largura 'thin'  */
+    border-left: thin ridge;
+    position: relative;
+}
+
+.last {
+    border-bottom: thin ridge; /* Largura 'thin'  */
+    border-right: thin ridge;
+}
+
+/* Novas Classes solicitadas [cite: 138-140] */
+
+.highlight {
+    background-color: #FFFF00; /* Amarelo [cite: 139] */
+}
+
+.ufo {
+    font-family: "monospace"; /* Estilo mono [cite: 140] */
+    font-size: large; /* Tamanho large [cite: 140] */
+    color: #00FF00; /* Verde [cite: 140] */
+    background-color: #000000; /* Preto [cite: 140] */
+}
+
+/* Estilos de links e outros elementos [cite: 79-96] */
+A:LINK { color: #0000FF; text-decoration: underline; }
+A:VISITED { color: #800080; }
+B { font-weight: bold; color: #800000; }
+I { font-style: italic; }

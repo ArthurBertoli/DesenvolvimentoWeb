@@ -1,0 +1,43 @@
+<?php
+// REQUISITO 4: Inicia a sessão
+session_start();
+
+// Configura o fuso horário para o Brasil
+date_default_timezone_set('America/Sao_Paulo');
+
+// REQUISITO 1: Mostrar data e hora formatada
+$data_formatada = date('d/m/Y');
+$hora_formatada = date('H:i');
+$texto_data = "Hoje é $data_formatada e agora são {$hora_formatada}h";
+
+// REQUISITO 2: Function + Manipulação de Strings e Arrays
+function sugerirEstilo($string_estilos) {
+    // Transforma a string em Array (Explode)
+    $lista = explode(",", $string_estilos);
+    
+    // Sorteia um item (Array manipulation)
+    $sorteado = $lista[array_rand($lista)];
+    
+    // Limpa espaços e deixa em MAIÚSCULO (String manipulation)
+    return strtoupper(trim($sorteado));
+}
+$estilo_do_dia = sugerirEstilo("Wildstyle, Tag, Bomb, Piece, Throwup");
+
+// REQUISITO 3: Contador de visitas usando arquivo .txt
+$arquivo = "contador.txt";
+if (!file_exists($arquivo)) {
+    file_put_contents($arquivo, "0");
+}
+$visitas = (int)file_get_contents($arquivo);
+$visitas++;
+file_put_contents($arquivo, $visitas);
+
+// REQUISITO 4: Exemplo de Session e Cookie
+// Session: verifica se é a primeira vez nesta navegação
+if (!isset($_SESSION['usuario_logado'])) {
+    $_SESSION['usuario_logado'] = "Visitante_" . rand(100, 999);
+}
+
+// Cookie: define um cookie que dura 24 horas
+setcookie("ultimo_acesso", $data_formatada, time() + 86400, "/");
+?>
