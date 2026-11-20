@@ -449,3 +449,42 @@ body {
     font-weight: bold;
     margin-bottom: 4px;
 }
+
+/* ==========================================
+   CARTÕES CLICÁVEIS, BOTÕES E PÁGINA DE BUSCA
+   ========================================== */
+
+a.card-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.search-form-page {
+    margin: 0 0 30px 0;
+}
+
+.search-summary {
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+.result-group {
+    margin-bottom: 40px;
+}
+
+.result-group > h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.empty-state h3 {
+    margin-bottom: 10px;
+}

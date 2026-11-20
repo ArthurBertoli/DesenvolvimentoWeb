@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="titulo">
+  <title id="titulo">JusDigital</title>
+  <!-- Fundo arredondado na cor principal do sistema -->
+  <rect x="0" y="0" width="64" height="64" rx="14" fill="#1a56db"/>
+  <!-- Balança da justiça -->
+  <g fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- coluna central -->
+    <line x1="32" y1="14" x2="32" y2="48"/>
+    <!-- travessão -->
+    <line x1="16" y1="20" x2="48" y2="20"/>
+    <!-- base -->
+    <line x1="22" y1="50" x2="42" y2="50"/>
+    <!-- cordas do prato esquerdo -->
+    <polyline points="16,20 10,34 22,34 16,20"/>
+    <!-- cordas do prato direito -->
+    <polyline points="48,20 42,34 54,34 48,20"/>
+  </g>
+  <!-- pratos -->
+  <path d="M9 34 a7 5 0 0 0 14 0 z" fill="#ffffff"/>
+  <path d="M41 34 a7 5 0 0 0 14 0 z" fill="#ffffff"/>
+  <!-- topo -->
+  <circle cx="32" cy="13" r="3" fill="#ffffff"/>
+</svg>

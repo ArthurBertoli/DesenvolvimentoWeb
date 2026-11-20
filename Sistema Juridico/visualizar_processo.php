@@ -1,65 +1,39 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Processo | JusDigital</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
+<?php
+require_once __DIR__ . '/data.php';
 
-    <header class="top-header">
-        <div class="container header-content">
-            <a href="index.php" class="logo">
-                <img src="assets/img/logo-sistema.svg" alt="Logo Sistema Jurídico" class="logo-img" onerror="this.style.display='none';">
-                <span class="logo-text">Jus<strong>Digital</strong></span>
-            </a>
-            <nav class="main-nav">
-                <a href="processos.php" class="active">Processos</a>
-                <a href="jurisprudencia.php">Jurisprudência</a>
-                <a href="advogados.php">Advogados</a>
-            </nav>
-            <div class="user-actions">
-                <a href="#login" class="btn btn-outline">Entrar</a>
-            </div>
-        </div>
-    </header>
+// Captura o ID da URL (convertido para inteiro)
+$id_processo = isset($_GET['id']) ? (int) $_GET['id'] : 0;
+$p = isset($processos[$id_processo]) ? $processos[$id_processo] : null;
+
+if ($p === null) {
+    http_response_code(404);
+}
+
+$titulo_pagina = 'Detalhes do Processo | JusDigital';
+$pagina_ativa = 'processos';
+require __DIR__ . '/header.php';
+?>
 
     <main class="content-section container">
         <a href="processos.php" class="btn btn-outline btn-sm mb-20">&larr; Voltar para Processos</a>
 
-        <?php
-        // Captura o ID da URL
-        $id_processo = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-
-        // Simulando banco de dados com detalhes extras
-        $banco_processos = [
-            1 => ["num" => "5002314-82.2026.8.24.0038", "autor" => "Carlos Eduardo Souza", "reu" => "Banco Sul S/A", "juiz" => "Dr. Alexandre Morais", "status" => "Em Andamento", "classe" => "status-progress", "vara" => "3ª Vara Cível", "data_inicio" => "10/01/2026"],
-            2 => ["num" => "0312455-19.2025.8.24.0038", "autor" => "Mariana Alcantara", "reu" => "Estado de Santa Catarina", "juiz" => "Dra. Helena Rios", "status" => "Julgado", "classe" => "status-success", "vara" => "1ª Vara da Fazenda Pública", "data_inicio" => "15/03/2025"],
-            3 => ["num" => "5019842-11.2026.8.24.0038", "autor" => "Roberto Alencar", "reu" => "Tech Soluções Ltda", "juiz" => "Dr. Alexandre Morais", "status" => "Suspenso", "classe" => "status-warning", "vara" => "3ª Vara Cível", "data_inicio" => "05/02/2026"]
-        ];
-
-        // Se o processo existir, mostra. Se não, exibe erro.
-        if (array_key_exists($id_processo, $banco_processos)) {
-            $p = $banco_processos[$id_processo];
-        ?>
+        <?php if ($p !== null) { ?>
 
         <div class="process-details-card">
             <div class="process-header-info">
                 <div>
-                    <h2>Processo Nº <?php echo $p['num']; ?></h2>
-                    <p class="text-muted"><?php echo $p['vara']; ?> - Magistrado(a): <?php echo $p['juiz']; ?></p>
+                    <h2>Processo Nº <?php echo e($p['num']); ?></h2>
+                    <p class="text-muted"><?php echo e($p['vara']); ?> - Magistrado(a): <?php echo e($p['juiz']); ?></p>
                 </div>
                 <div>
-                    <span class="status-badge <?php echo $p['classe']; ?>"><?php echo $p['status']; ?></span>
+                    <span class="status-badge <?php echo e($p['classe']); ?>"><?php echo e($p['status']); ?></span>
                 </div>
             </div>
 
             <div class="process-parties">
-                <p><strong>Autor (Requerente):</strong> <?php echo $p['autor']; ?></p>
-                <p><strong>Réu (Requerido):</strong> <?php echo $p['reu']; ?></p>
-                <p><strong>Data de Autuação:</strong> <?php echo $p['data_inicio']; ?></p>
+                <p><strong>Autor (Requerente):</strong> <?php echo e($p['autor']); ?></p>
+                <p><strong>Réu (Requerido):</strong> <?php echo e($p['reu']); ?></p>
+                <p><strong>Data de Autuação:</strong> <?php echo e($p['data_inicio']); ?></p>
             </div>
 
             <hr class="divider">
@@ -75,7 +49,7 @@
                     <p>Juntada de Petição de Manifestação da Parte Autora.</p>
                 </div>
                 <div class="timeline-item">
-                    <span class="timeline-date"><?php echo $p['data_inicio']; ?></span>
+                    <span class="timeline-date"><?php echo e($p['data_inicio']); ?></span>
                     <p>Distribuição do processo por Sorteio.</p>
                 </div>
             </div>
@@ -90,11 +64,4 @@
 
     </main>
 
-    <footer class="main-footer">
-        <div class="container">
-            <p>&copy; <?php echo date("Y"); ?> JusDigital - Sistema Jurídico. Todos os direitos reservados.</p>
-        </div>
-    </footer>
-
-</body>
-</html>
+<?php require __DIR__ . '/footer.php'; ?>
