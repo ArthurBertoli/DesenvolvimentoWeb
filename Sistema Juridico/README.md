@@ -50,4 +50,4 @@ Depois acesse `http://localhost:8000` no navegador. Também funciona em qualquer
 
 ## Autores
 
-Arthur Bertoli
+Arthur Bertoli e Herton Silveira
